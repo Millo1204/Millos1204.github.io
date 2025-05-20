@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Alerta Ruido! Impacto en el Aprendizaje Escolar</title>
+    <style>
+        /* --- Reset y Estilos Globales --- */
+        :root {
+            /* Paleta de Colores Neón Vibrantes y Fondos Oscuros Intensos */
+            --color-primario: #00FFFF; /* Cian Aqua Neón */
+            --color-secundario: #FF0077; /* Magenta Rosa Neón */
+            --color-acento1: #00FF00; /* Verde Lima Neón */
+            --color-acento2: #FFD700; /* Amarillo Oro Brillante */
+            --color-complemento1: #9D00FF; /* Púrpura Eléctrico */
+            --color-complemento2: #FF7F00; /* Naranja Neón Intenso */
+
+            --color-fondo-principal: #0D0D1A; /* Azul Oscuro Noche (casi negro) */
+            --color-fondo-secundario: #1A1A2E; /* Azul Noche Intenso para secciones */
+            --color-fondo-terciario: #2E2E4A; /* Azul Púrpura Oscuro para elementos */
+
+            --color-texto-principal: #E0E0FF; /* Blanco Azulado Suave para legibilidad */
+            --color-texto-secundario: #B0B0D0; /* Gris Azulado para subtextos */
+            --color-blanco: #FFFFFF;
+            --color-sombra-texto: rgba(0, 0, 0, 0.6);
+            --color-sombra-caja: rgba(0, 0, 0, 0.5);
+
+            --fuente-titulos: 'Poppins', sans-serif; /* Más moderna y con impacto */
+            --fuente-texto: 'Inter', sans-serif;    /* Clara y legible para cuerpo */
+
+            --sombra-caja-intensa: 0 15px 40px var(--color-sombra-caja);
+            --borde-radio: 20px; /* Bordes más redondeados y modernos */
+            --transicion-rapida: all 0.3s ease-in-out;
+            --transicion-media: all 0.5s ease-in-out;
+
+            /* Variables RGB para sombras luminosas */
+            --rgb-primario: 0, 255, 255; /* Cian Aqua Neón */
+            --rgb-secundario: 255, 0, 119; /* Magenta Rosa Neón */
+            --rgb-acento1: 0, 255, 0; /* Verde Lima Neón */
+            --rgb-complemento1: 157, 0, 255; /* Púrpura Eléctrico */
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fuente-texto);
+            background: var(--color-fondo-principal);
+            color: var(--color-texto-principal);
+            line-height: 1.8; /* Mayor espaciado para lectura en fondos oscuros */
+            overflow-x: hidden;
+            transition: var(--transicion-media);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px; /* Un poco más ancho para diseños modernos */
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+        header {
+            background: linear-gradient(145deg, var(--color-complemento1), var(--color-secundario));
+            color: var(--color-blanco);
+            padding: 90px 25px 100px;
+            text-align: center;
+            border-bottom-left-radius: 70% 30%;
+            border-bottom-right-radius: 70% 30%;
+            box-shadow: 0 20px 45px var(--color-sombra-caja);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        header::before, header::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3; /* Más opaco para un efecto neón más fuerte */
+            z-index: 0;
+            filter: blur(100px); /* Desenfoque más intenso */
+            animation: auroraEffect 18s infinite alternate;
+        }
+        header::before {
+            width: 450px; height: 450px;
+            background-color: var(--color-primario);
+            top: -180px; left: -120px;
+        }
+        header::after {
+            width: 400px; height: 400px;
+            background-color: var(--color-acento1);
+            bottom: -150px; right: -100px;
+            animation-delay: -9s;
+        }
+        @keyframes auroraEffect {
+            0% { transform: scale(1) translate(0,0); }
+            50% { transform: scale(1.4) translate(30px, -40px); }
+            100% { transform: scale(1) translate(0,0); }
+        }
+
+        header h1 {
+            font-family: var(--fuente-titulos);
+            font-size: 3.8rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDownHeader 1s ease-out;
+            text-shadow: 0 0 15px rgba(var(--rgb-primario), 0.7), 0 0 25px rgba(var(--rgb-secundario), 0.5); /* Efecto neón en texto */
+        }
+        header p {
+            font-size: 1.45rem;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+            color: var(--color-texto-principal);
+            animation: fadeInUpHeader 1s ease-out 0.4s backwards;
+            font-weight: 300;
+            text-shadow: 1px 1px 5px var(--color-sombra-texto);
+        }
+        @keyframes fadeInDownHeader {
+            from { opacity: 0; transform: translateY(-70px); } to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUpHeader {
+            from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-botones {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: -55px; /* Superponer más sobre el header */
+            position: relative;
+            z-index: 2;
+            padding-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .boton-nav {
+            background: linear-gradient(45deg, var(--color-acento1), var(--color-acento2)); /* Verde a Amarillo */
+            color: var(--color-fondo-principal); /* Texto oscuro para contraste */
+            border: none;
+            padding: 16px 35px;
+            font-family: var(--fuente-titulos);
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transicion-rapida), box-shadow 0.4s ease, transform 0.3s ease;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            position: relative;
+            overflow: hidden; /* Para el efecto de brillo */
+        }
+        .boton-nav::before { /* Efecto de brillo al pasar el ratón */
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(-20deg);
+            transition: 0.5s;
+        }
+        .boton-nav:hover::before {
+            left: 100%;
+        }
+
+        .boton-nav:hover {
+            background: linear-gradient(45deg, var(--color-acento2), var(--color-primario)); /* Amarillo a Cian */
+            color: var(--color-fondo-principal);
+            transform: translateY(-6px) scale(1.07);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+        }
+        .boton-nav.active {
+            background: linear-gradient(45deg, var(--color-secundario), var(--color-complemento1)); /* Rosa a Púrpura */
+            color: var(--color-blanco);
+            box-shadow: inset 0 4px 9px rgba(0,0,0,0.5), 0 3px 8px rgba(0,0,0,0.3), 0 0 15px rgba(var(--rgb-secundario), 0.7); /* Sombra con neón */
+            transform: scale(1.03);
+        }
+
+        .contenido-seccion {
+            display: none;
+            padding: 40px 35px;
+            margin-top: 20px;
+            background-color: var(--color-fondo-secundario);
+            border-radius: var(--borde-radio);
+            box-shadow: var(--sombra-caja-intensa);
+            animation: sectionAppear 0.7s ease-out;
+            border: 2px solid var(--color-fondo-terciario);
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .contenido-seccion::before { /* Fondo sutil de patrón o efecto */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at center, rgba(var(--rgb-primario), 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .contenido-seccion.active {
+            display: block;
+        }
+        @keyframes sectionAppear {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .contenido-seccion h2 {
+            font-family: var(--fuente-titulos);
+            font-size: 3.2rem;
+            color: var(--color-primario); /* Cian Neón */
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            text-shadow: 0 0 10px rgba(var(--rgb-primario), 0.8);
+        }
+        .contenido-seccion h2::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--color-acento1), var(--color-complemento2));
+            margin: 15px auto 0;
+            border-radius: 3px;
+        }
+
+        .contenido-seccion p, .contenido-seccion ul {
+            margin-bottom: 22px;
+            font-size: 1.1rem;
+            color: var(--color-texto-secundario);
+            line-height: 1.7;
+        }
+        .contenido-seccion ul {
+            list-style: none; padding-left: 0;
+        }
+        .contenido-seccion ul li {
+            background-color: var(--color-fondo-terciario);
+            margin-bottom: 12px;
+            padding: 18px;
+            border-radius: calc(var(--borde-radio) / 1.5);
+            border-left: 5px solid var(--color-acento2); /* Amarillo Brillante */
+            transition: var(--transicion-rapida);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .contenido-seccion ul li:hover {
+            transform: translateX(8px);
+            background-color: #3A3A5A; /* Un poco más claro que fondo-terciario */
+            border-left-color: var(--color-secundario); /* Magenta Neón */
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+        .contenido-seccion strong {
+            color: var(--color-acento1); /* Verde Lima Neón */
+            font-weight: 700;
+        }
+
+        .galeria-imagenes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .galeria-imagenes img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--borde-radio);
+            box-shadow: 0 10px 20px var(--color-sombra-caja);
+            transition: var(--transicion-rapida), filter 0.4s ease;
+            cursor: pointer;
+            border: 3px solid var(--color-fondo-terciario);
+        }
+        .galeria-imagenes img:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            filter: brightness(1.2) saturate(1.1);
+            border-color: var(--color-primario);
+            outline: 2px solid var(--color-primario); /* Borde luminoso */
+            outline-offset: 3px;
+        }
+
+        .acordeon-item {
+            background-color: var(--color-fondo-secundario);
+            margin-bottom: 18px;
+            border-radius: var(--borde-radio);
+            box-shadow: 0 6px 15px var(--color-sombra-caja);
+            border: 2px solid var(--color-fondo-terciario);
+            overflow: hidden;
+        }
+        .acordeon-titulo {
+            background: linear-gradient(120deg, var(--color-fondo-terciario), #3A3A5A);
+            color: var(--color-texto-principal);
+            padding: 20px 28px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--fuente-titulos);
+            font-size: 1.3rem;
+            transition: background 0.4s ease;
+        }
+        .acordeon-titulo:hover {
+            background: linear-gradient(120deg, #3A3A5A, var(--color-fondo-terciario));
+            color: var(--color-primario);
+        }
+        .acordeon-titulo::after {
+            content: '\276F';
+            font-size: 1.8rem;
+            transition: transform 0.4s ease;
+            color: var(--color-primario);
+        }
+        .acordeon-item.active .acordeon-titulo::after {
+            transform: rotate(90deg);
+            color: var(--color-secundario);
+        }
+        .acordeon-contenido {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 28px;
+            background-color: var(--color-fondo-secundario);
+            color: var(--color-texto-secundario);
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            border-top: 1px solid var(--color-fondo-terciario);
+        }
+        .acordeon-item.active .acordeon-contenido {
+            padding: 25px 28px;
+            max-height: 600px; /* Suficiente para contenido flexible */
+        }
+
+        .modal-imagen {
+            display: none; position: fixed; z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            overflow: auto; background-color: rgba(0, 0, 0, 0.96);
+            animation: fadeInModalBg 0.4s ease;
+        }
+        .modal-contenido {
+            margin: auto; display: block;
+            width: auto; max-width: 85%; max-height: 85vh;
+            position: relative; top: 50%;
+            transform: translateY(-50%) scale(0.7);
+            animation: zoomInModalContent 0.45s 0.1s forwards cubic-bezier(0.2, 0.95, 0.35, 1.25);
+        }
+        @keyframes fadeInModalBg { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes zoomInModalContent { to { transform: translateY(-50%) scale(1); } }
+
+        .modal-contenido img {
+            width: auto; max-width: 100%; height: auto; max-height: 85vh;
+            border-radius: var(--borde-radio);
+            box-shadow: 0 0 45px rgba(var(--rgb-primario), 0.8), 0 0 25px rgba(var(--rgb-secundario), 0.5); /* Doble sombra neón */
+            display: block; margin: 0 auto;
+            border: 3px solid var(--color-primario);
+        }
+        .cerrar-modal {
+            position: absolute; top: 25px; right: 40px;
+            color: var(--color-blanco); font-size: 50px; font-weight: bold;
+            transition: 0.4s, transform 0.4s ease; cursor: pointer;
+            text-shadow: 0 0 12px var(--color-secundario);
+        }
+        .cerrar-modal:hover, .cerrar-modal:focus {
+            color: var(--color-primario); transform: rotate(270deg) scale(1.3);
+            text-shadow: 0 0 15px var(--color-primario);
+        }
+        @keyframes fadeOutModalContent {
+            from { opacity: 1; transform: translateY(-50%) scale(1); }
+            to { opacity: 0; transform: translateY(-50%) scale(0.6); }
+        }
+
+
+        footer {
+            background: linear-gradient(135deg, var(--color-fondo-terciario), var(--color-fondo-secundario));
+            color: var(--color-texto-secundario);
+            text-align: center;
+            padding: 40px 25px;
+            margin-top: 50px;
+            border-top: 4px solid var(--color-primario);
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.4);
+        }
+        footer p { font-size: 1rem; margin-bottom: 8px; }
+        footer a {
+            color: var(--color-primario);
+            text-decoration: none; font-weight: bold;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        footer a:hover {
+            color: var(--color-acento1);
+            text-shadow: 0 0 8px var(--color-acento1);
+        }
+
+        .highlight-box {
+            background: linear-gradient(60deg, var(--color-complemento1), var(--color-complemento2)); /* Púrpura a Naranja */
+            color: var(--color-blanco);
+            padding: 35px;
+            border-radius: var(--borde-radio);
+            margin: 25px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4), 0 0 20px rgba(var(--rgb-complemento1), 0.5); /* Sombra con brillo */
+            text-align: center;
+            border: 2px solid var(--color-complemento1);
+        }
+        .highlight-box h3 {
+            font-family: var(--fuente-titulos);
+            margin-bottom: 15px;
+            font-size: 2rem;
+            text-shadow: 0 0 10px rgba(0,0,0,0.7);
+            color: var(--color-acento2); /* Amarillo dentro de la caja */
+        }
+        .highlight-box p { color: var(--color-texto-principal); font-size: 1.15rem; }
+
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--color-primario), var(--color-acento1)); /* Cian a Verde */
+            color: var(--color-fondo-principal);
+            padding: 18px 38px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.15rem;
+            transition: var(--transicion-rapida), box-shadow 0.4s ease, transform 0.3s ease;
+            margin-top: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button::before { /* Efecto de brillo al pasar el ratón */
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(-20deg);
+            transition: 0.5s;
+        }
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        .cta-button:hover {
+            background: linear-gradient(45deg, var(--color-acento1), var(--color-primario));
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.5), 0 0 20px rgba(var(--rgb-acento1), 0.7);
+        }
+
+        @media (max-width: 992px) {
+            header h1 { font-size: 3.2rem; }
+            header p { font-size: 1.3rem; }
+            .boton-nav { padding: 14px 30px; font-size: 1rem; }
+            .contenido-seccion h2 { font-size: 2.8rem; }
+            .galeria-imagenes { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+            .highlight-box h3 { font-size: 1.8rem; }
+            .acordeon-titulo { font-size: 1.2rem; }
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.7rem; }
+            header p { font-size: 1.2rem; }
+            .nav-botones { flex-direction: column; align-items: center; margin-top: -40px; }
+            .boton-nav { width: 80%; margin-bottom: 15px; padding: 12px 25px; font-size: 0.95rem; }
+            .contenido-seccion { padding: 30px 25px; }
+            .contenido-seccion h2 { font-size: 2.4rem; }
+            .contenido-seccion h2::after { width: 100px; height: 4px; }
+            .galeria-imagenes { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+            .modal-contenido { max-width: 90%; }
+            .acordeon-titulo { font-size: 1.1rem; padding: 18px 22px; }
+            .highlight-box { padding: 30px; }
+            .highlight-box h3 { font-size: 1.6rem; }
+            .cta-button { padding: 14px 30px; font-size: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            header { padding: 70px 20px 80px; border-bottom-left-radius: 60% 25%; border-bottom-right-radius: 60% 25%;}
+            header h1 { font-size: 2.2rem; margin-bottom: 20px;}
+            header p { font-size: 1.05rem; }
+            .boton-nav { width: 90%; font-size: 0.85rem; padding: 10px 20px; }
+            .contenido-seccion { padding: 25px 20px; }
+            .contenido-seccion h2 { font-size: 2rem; margin-bottom: 20px;}
+            .contenido-seccion h2::after { width: 80px; height: 3px; margin-top: 10px; }
+            .contenido-seccion p, .contenido-seccion ul { font-size: 0.95rem; }
+            .contenido-seccion ul li { padding: 15px; }
+            .acordeon-titulo { font-size: 1rem; padding: 15px 18px; }
+            .acordeon-contenido { padding: 18px 18px; }
+            .highlight-box { padding: 25px; margin: 18px 0; }
+            .highlight-box h3 { font-size: 1.4rem; }
+            .cta-button { padding: 12px 25px; font-size: 0.9rem; }
+            .cerrar-modal { top: 15px; right: 20px; font-size: 40px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>¡Escucha el Silencio, Aprende Mejor!</h1>
+        <p>Descubre cómo la contaminación auditiva afecta a tu colegio y qué podemos hacer para cambiarlo.</p>
+    </header>
+
+    <div class="container">
+        <nav class="nav-botones">
+            <button class="boton-nav" data-target="que-es-ruido-escolar">¿Ruido Escolar?</button>
+            <button class="boton-nav" data-target="fuentes-ruido">¿De Dónde Viene?</button>
+            <button class="boton-nav" data-target="impacto-aprendizaje">¿Cómo Afecta?</button>
+            <button class="boton-nav" data-target="soluciones-colegio">¡A Bajar Volumen!</button>
+            <button class="boton-nav" data-target="galeria-escolar">Ruido en Acción</button>
+        </nav>
+
+        <section id="que-es-ruido-escolar" class="contenido-seccion">
+            <h2>¿Qué es el Ruido Escolar?</h2>
+            <p>La **contaminación auditiva**, o ruido excesivo, es cualquier sonido molesto que interfiere con nuestras actividades diarias. En el **colegio**, esto significa todos esos ruidos que nos impiden concentrarnos, aprender y sentirnos tranquilos.</p>
+            <p>No es solo el "bullicio" normal; hablamos de un nivel de sonido que puede ser **perjudicial para nuestra capacidad de aprender y enseñar**. Desde conversaciones muy altas en clase hasta el estruendo en el recreo, el ruido no deseado es un verdadero desafío en el ambiente educativo.</p>
+            <div class="highlight-box" style="background: linear-gradient(60deg, var(--color-primario), var(--color-acento1)); border-color: var(--color-primario);">
+                <h3>¿Sabías Qué...?</h3>
+                <p>La Organización Mundial de la Salud (OMS) sugiere que los niveles de ruido de fondo en las aulas no deberían superar los **35 decibelios (dB)** para permitir una buena comunicación y aprendizaje. ¡Muchos colegios superan este límite!</p>
+            </div>
+        </section>
+
+        <section id="fuentes-ruido" class="contenido-seccion">
+            <h2>¿De Dónde Viene Tanto Ruido en el Cole?</h2>
+            <p>Identificar las fuentes de ruido es el primer paso para crear un ambiente más tranquilo y productivo en nuestro colegio:</p>
+            <div class="acordeon">
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo">Dentro del Aula</div>
+                    <div class="acordeon-contenido">
+                        <p>El aula puede ser una gran fuente de ruido si no tenemos cuidado:</p>
+                        <ul>
+                            <li>Conversaciones constantes y en voz alta de los estudiantes.</li>
+                            <li>Arrastrar sillas y mesas.</li>
+                            <li>Caída de objetos (lápices, libros).</li>
+                            <li>Materiales didácticos ruidosos.</li>
+                            <li>Equipos como proyectores o aires acondicionados antiguos.</li>
+                        </ul>
+                        <img src="https://images.pexels.com/photos/8617968/pexels-photo-8617968.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Aula con estudiantes trabajando, algunos podrían estar hablando." style="width:100%; max-width:500px; border-radius: 12px; margin-top:15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                    </div>
+                </div>
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo">Pasillos y Patios</div>
+                    <div class="acordeon-contenido">
+                        <p>Estas zonas son clave para el movimiento y el juego, pero también pueden ser muy ruidosas:</p>
+                        <ul>
+                            <li>Gritos y carreras durante los recreos.</li>
+                            <li>Conversaciones en voz alta al cambiar de clase.</li>
+                            <li>Portazos y taquillas que se cierran bruscamente.</li>
+                            <li>Eco en pasillos largos y vacíos.</li>
+                        </ul>
+                         <img src="https://images.pexels.com/photos/8928094/pexels-photo-8928094.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Niños jugando en el patio del colegio." style="width:100%; max-width:500px; border-radius: 12px; margin-top:15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                    </div>
+                </div>
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo">Comedores y Cafeterías</div>
+                    <div class="acordeon-contenido">
+                        <p>La hora de comer es importante, pero suele ser uno de los momentos más ruidosos del día:</p>
+                        <ul>
+                            <li>Murmullo general de muchas conversaciones a la vez.</li>
+                            <li>Ruido de platos, cubiertos y bandejas.</li>
+                            <li>Movimiento de sillas y mesas.</li>
+                            <li>Maquinaria de cocina (en algunos casos).</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo">Timbres y Anuncios</div>
+                    <div class="acordeon-contenido">
+                        <p>Son necesarios para organizar el día, pero su volumen y frecuencia pueden ser un problema:</p>
+                        <ul>
+                            <li>Timbres estridentes o muy largos.</li>
+                            <li>Anuncios por megáfono con volumen excesivo o distorsionado.</li>
+                            <li>Música ambiental en zonas comunes a volumen alto.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo">Actividades Especiales</div>
+                    <div class="acordeon-contenido">
+                        <p>Algunas actividades, aunque divertidas y necesarias, generan mucho ruido:</p>
+                        <ul>
+                            <li>Clases de música (instrumentos, canto).</li>
+                            <li>Educación física en gimnasios cerrados (pelotas, gritos, silbatos).</li>
+                            <li>Eventos escolares, festivales o asambleas.</li>
+                            <li>Talleres que implican herramientas o movimiento.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impacto-aprendizaje" class="contenido-seccion">
+            <h2>¿Cómo Nos Afecta el Ruido en el Cole?</h2>
+            <p>El ruido excesivo no es solo una molestia, tiene consecuencias directas en cómo aprendemos y nos sentimos en el colegio:</p>
+            <ul>
+                <li><strong>Dificultad para Concentrarse:</strong> Es más difícil prestar atención a las explicaciones del profesor o realizar tareas que requieren enfoque. <strong>¡Nuestra mente se distrae!</strong></li>
+                <li><strong>Problemas para Entender:</strong> Si hay mucho ruido, no escuchamos bien lo que dice el profesor o nuestros compañeros, lo que lleva a malentendidos y a perder información importante.</li>
+                <li><strong>Menor Rendimiento Académico:</strong> La dificultad para concentrarse y entender puede llevar a obtener calificaciones más bajas y a no alcanzar todo nuestro potencial.</li>
+                <li><strong>Estrés y Cansancio:</strong> Estar en un ambiente ruidoso todo el día puede hacernos sentir más irritables, ansiosos y agotados.</li>
+                <li><strong>Fatiga Vocal en Profesores:</strong> Los maestros tienen que forzar la voz para ser escuchados, lo que puede causar problemas de garganta y afonía.</li>
+                <li><strong>Problemas de Comunicación:</strong> El ruido dificulta las conversaciones claras y puede afectar negativamente nuestras relaciones con compañeros y profesores.</li>
+                <li><strong>Impacto en Niños con Necesidades Especiales:</strong> Estudiantes con TDAH, autismo o problemas de audición son especialmente sensibles y afectados por el ruido.</li>
+            </ul>
+            <div class="highlight-box">
+                <h3>¡El Ruido es un Ladrón de Atención!</h3>
+                <p>Un ambiente escolar más silencioso no solo mejora las notas, sino que también nos ayuda a sentirnos más calmados, felices y listos para aprender y convivir mejor.</p>
+            </div>
+        </section>
+
+        <section id="soluciones-colegio" class="contenido-seccion">
+            <h2>¡A Bajar el Volumen! Soluciones para un Cole Más Silencioso</h2>
+            <p>Todos podemos contribuir a reducir el ruido en nuestro colegio. ¡Pequeños cambios hacen una gran diferencia!</p>
+            <div class="acordeon">
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo">¿Qué Podemos Hacer los Estudiantes?</div>
+                    <div class="acordeon-contenido">
+                        <ul>
+                            <li><strong>Hablar en un tono de voz adecuado:</strong> No es necesario gritar para comunicarse en clase o en los pasillos.</li>
+                            <li><strong>Evitar arrastrar sillas y mesas:</strong> Levantarlas un poco al moverlas.</li>
+                            <li><strong>Cerrar puertas y taquillas con suavidad.</strong></li>
+                            <li><strong>Respetar los turnos de palabra</strong> y escuchar atentamente a los demás.</li>
+                            <li><strong>Participar en campañas de concienciación</strong> sobre el ruido.</li>
+                            <li><strong>Ser conscientes del ruido que generamos</strong> con nuestros materiales o juegos.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo">¿Qué Pueden Hacer los Profesores?</div>
+                    <div class="acordeon-contenido">
+                        <ul>
+                            <li><strong>Establecer normas claras sobre el ruido en el aula</strong> y recordarlas de forma positiva.</li>
+                            <li><strong>Usar señales visuales o no verbales</strong> para pedir silencio o atención.</li>
+                            <li><strong>Organizar el aula</strong> para minimizar el movimiento innecesario.</li>
+                            <li><strong>Incluir "pausas de silencio"</strong> o momentos de calma durante la jornada.</li>
+                            <li><strong>Utilizar materiales didácticos</strong> que no sean excesivamente ruidosos.</li>
+                            <li><strong>Educar sobre la importancia del silencio</strong> para el aprendizaje y el bienestar.</li>
+                            <li><strong>Modelar un tono de voz calmado y respetuoso.</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="acordeon-item">
+                    <div class="acordeon-titulo">¿Qué Puede Hacer el Colegio (Dirección)?</div>
+                    <div class="acordeon-contenido">
+                        <ul>
+                            <li><strong>Invertir en acondicionamiento acústico:</strong>
+                                <ul>
+                                    <li>Colocar materiales absorbentes en aulas, pasillos y comedores (paneles de corcho, alfombras, cortinas gruesas, techos acústicos, plantas).</li>
+                                    <li>Revisar y mejorar el aislamiento de ventanas y puertas.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Establecer horarios específicos</strong> para actividades ruidosas, lejos de las aulas en horas de clase.</li>
+                            <li><strong>Regular el volumen de timbres y sistemas de megafonía.</strong></li>
+                            <li><strong>Crear "zonas de calma"</strong> o espacios silenciosos en el colegio.</li>
+                            <li><strong>Realizar campañas de sensibilización y formación</strong> para toda la comunidad educativa (alumnos, profesores, personal y familias).</li>
+                            <li><strong>Colocar recordatorios visuales</strong> sobre la importancia de mantener un nivel de ruido adecuado.</li>
+                            <li><strong>Revisar el diseño de los espacios:</strong> por ejemplo, en comedores, usar separadores o mesas más pequeñas puede ayudar.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align:center; margin-top: 35px;">
+                <a href="#" class="cta-button" onclick="alert('¡Genial! Habla con tus compañeros y profesores para empezar a hacer cambios. ¡Tu colegio te lo agradecerá!'); return false;">¡Actuemos por un Cole en Calma!</a>
+            </p>
+        </section>
+
+        <section id="galeria-escolar" class="contenido-seccion">
+            <h2>El Ruido Escolar en Acción (y sus Alternativas)</h2>
+            <p>Estas imágenes nos ayudan a visualizar dónde se genera el ruido en el colegio y cómo podríamos imaginar espacios más tranquilos.</p>
+            <div class="galeria-imagenes">
+                <img src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Aula bulliciosa con muchos estudiantes hablando a la vez." class="imagen-galeria">
+                <img src="https://images.pexels.com/photos/7173104/pexels-photo-7173104.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Estudiantes concentrados en una biblioteca escolar silenciosa." class="imagen-galeria">
+                <img src="https://images.pexels.com/photos/8617746/pexels-photo-8617746.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Niños gritando y corriendo en un pasillo del colegio." class="imagen-galeria">
+                <img src="https://images.pexels.com/photos/8613071/pexels-photo-8613071.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Un profesor intentando dar clase con ruido de fondo." class="imagen-galeria">
+                <img src="https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Comedor escolar lleno y ruidoso durante el almuerzo." class="imagen-galeria">
+                <img src="https://images.pexels.com/photos/8363116/pexels-photo-8363116.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Aula con paneles acústicos en las paredes para reducir el eco." class="imagen-galeria">
+            </div>
+        </section>
+    </div>
+
+    <div id="modalImagen" class="modal-imagen">
+        <span class="cerrar-modal">&times;</span>
+        <div class="modal-contenido">
+            <img id="imagenEnModal" src="" alt="Imagen Ampliada del Contexto Escolar">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024-2025 Por un Colegio con Menos Ruido y Más Aprendizaje.</p>
+        <p>Adaptado para la comunidad educativa. por: Maria camila C, Valery lucumi, isabel rudas, laura morales, valentina estepa y diocelin zuñiga, DE GRADO 9-1. </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const botonesNav = document.querySelectorAll('.boton-nav');
+            const seccionesContenido = document.querySelectorAll('.contenido-seccion');
+            const acordeonItems = document.querySelectorAll('.acordeon-item');
+            const imagenesGaleria = document.querySelectorAll('.imagen-galeria');
+            const modal = document.getElementById('modalImagen');
+            const imagenModal = document.getElementById('imagenEnModal');
+            const cerrarModalBtn = document.querySelector('.cerrar-modal');
+
+            // Función para gestionar la visibilidad de secciones y estado de botones
+            function toggleSection(targetId, clickedButton) {
+                const targetElement = document.getElementById(targetId);
+                const isActive = targetElement.classList.contains('active');
+
+                // Ocultar todas las secciones y desactivar todos los botones
+                seccionesContenido.forEach(seccion => seccion.classList.remove('active'));
+                botonesNav.forEach(btn => btn.classList.remove('active'));
+
+                if (!isActive) { // Si no estaba activa, activarla
+                    targetElement.classList.add('active');
+                    clickedButton.classList.add('active');
+                    // Scroll suave a la sección
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+                }
+                // Si ya estaba activa, al haber quitado 'active' de todas, quedará cerrada.
+            }
+
+            botonesNav.forEach(boton => {
+                boton.addEventListener('click', function() {
+                    toggleSection(this.dataset.target, this);
+                });
+            });
+
+            acordeonItems.forEach(item => {
+                const titulo = item.querySelector('.acordeon-titulo');
+                titulo.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+                    // Comportamiento de acordeón individual:
+                    if (isActive) {
+                        item.classList.remove('active');
+                    } else {
+                         // Opcional: cerrar otros antes de abrir este si quieres que solo uno esté abierto
+                        // acordeonItems.forEach(i => i.classList.remove('active'));
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            imagenesGaleria.forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = "block";
+                    void modal.offsetWidth; // Trigger reflow for animation
+                    document.querySelector('.modal-contenido').style.animationName = 'zoomInModalContent';
+                    imagenModal.src = this.src;
+                    imagenModal.alt = this.alt;
+                });
+            });
+
+            function closeModal() {
+                const modalContent = document.querySelector('.modal-contenido');
+                modalContent.style.animationName = 'fadeOutModalContent';
+                setTimeout(() => {
+                    modal.style.display = "none";
+                }, 280); // Sincronizar con duración de animación de salida
+            }
+
+            cerrarModalBtn.addEventListener('click', closeModal);
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', function(event) {
+                if (event.key === "Escape" && modal.style.display === "block") closeModal();
+            });
+
+            // Mostrar la primera sección por defecto al cargar y activar su botón
+            if (botonesNav.length > 0) {
+                toggleSection(botonesNav[0].dataset.target, botonesNav[0]);
+            }
+        });
+    </script>
+
+</body>
+</html>
